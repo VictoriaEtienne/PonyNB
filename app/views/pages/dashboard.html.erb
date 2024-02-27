@@ -1,6 +1,6 @@
 <% if user_signed_in? %>
   <div id="dashboard-container">
-    <h1>Welcome, <%= current_user.first_name %>!</h1>
+    <h1>Welcome, <%= @user.first_name %>!</h1>
 
     <div>
       <h2>Your Bookings</h2>
@@ -23,7 +23,25 @@
       <p>Declined Bookings: <%= @declined_bookings %></p>
     </div>
 
-    <!-- Add more sections as needed rajouter un encart sur les demandes de booking des autres sur mes poney-->
+    <div>
+      <h2>Booking Requests on Your Ponies</h2>
+      <% if @ponies_with_requests.present? %>
+        <ul>
+          <% @ponies_with_requests.each do |pony| %>
+            <li>
+              <%= link_to "Booking request on #{pony.name}", pony_path(pony) %>
+              <% if pony.booking_requests.pending.present? %>
+                (<%= pluralize(pony.booking_requests.pending.count, 'pending request') %>)
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      <% else %>
+        <p>No booking requests on your ponies at the moment.</p>
+      <% end %>
+    </div>
+
+    <!-- Add more sections as needed -->
 
   </div>
 <% else %>
