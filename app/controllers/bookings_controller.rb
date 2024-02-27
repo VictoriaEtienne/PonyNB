@@ -16,6 +16,12 @@ class BookingsController < ApplicationController
     end
   end
 
+  def accept
+  end
+
+  def decline
+  end
+
   private
 
   def bookings_params
