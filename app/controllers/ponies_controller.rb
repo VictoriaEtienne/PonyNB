@@ -15,7 +15,7 @@ class PoniesController < ApplicationController
     @pony = Pony.new(pony_params)
     @pony.user = current_user
     if @pony.save
-      redirect_to pony_path(@pony)
+      redirect_to ponies_path(@pony)
     else
       render :new
     end
