@@ -1,2 +1,9 @@
 <h1>Ponies#show</h1>
 <p>Find me in app/views/ponies/show.html.erb</p>
+
+    <-- Poney Card -->
+    <div class="listing col-md-8">
+        <h3><strong><%= @pony.name %></strong></h3>
+    </div><br>
+
+<%= link_to "See all ponies", ponies_path %>
