@@ -17,9 +17,13 @@ class BookingsController < ApplicationController
   end
 
   def accept
+    @booking.update(status: :accepted)
+    redirect_to root_path, notice: 'Booking was accepted.'
   end
 
   def decline
+    @booking.update(status: :declined)
+    redirect_to root_path, notice: 'Booking was declined.'
   end
 
   private
