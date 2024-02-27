@@ -1,8 +1,55 @@
-<h1>Ponies#show</h1>
-<p>Find me in app/views/ponies/show.html.erb</p>
+<div class="container-listing">
+  <div class="row listing-content">
+    <!-- Details box -->
+    <div class="listing col-md-8">
+      <div class="listing-info">
+        <div class="pony-details">
+          <h3 class="pony-name"><strong><%= @pony.name %></strong></h3>
+          <div class="image-wrapper">
+            <%= image_tag "/assets/pony_one.jpg", class: "small-pony-image" %>
+          </div>
+        </div>
+        <ul class="details-list">
+          <li>Alias: <%= @pony.alias %></li>
+          <li>Sex: <%= @pony.sex %></li>
+          <li>Color: <%= @pony.color %></li>
+          <li>Discipline: <%= @pony.discipline %></li>
+          <li>Breed: <%= @pony.type %></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="booking-section">
+    <%= link_to "Book this pony", new_pony_booking_path(@pony), class: "btn btn-primary" %>
+  </div>
+</div>
 
-  <h3><strong><%= @pony.name %></strong></h3>
-  <p><%= @pony.price %></p>
-        <%= @pony.description %>
+<style>
+  .listing-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
 
-<%= link_to "book a poney", new_pony_booking_path(@pony) %>
+  .image-wrapper {
+    max-width: 500px;
+    margin-top: 10px; /* Set the maximum width for the image container */
+  }
+
+  .small-pony-image {
+    max-width: 100%; /* Set the maximum width for the image */
+    max-height: auto; /* Maintain the image's aspect ratio */
+  }
+
+  .details-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    margin-top: 60px;
+    margin-right: 200px;
+  }
+
+  .details-list li {
+    margin-bottom: 5px;
+  }
+</style>

@@ -1,0 +1,8 @@
+<h1>Bookings#create</h1>
+<p>Find me in app/views/bookings/create.html.erb</p>
+<%= simple_form_for([@pony, @booking]) do |f| %>
+  <%= f.input :start_time %>
+  <%= f.input :end_time %>
+  <%= f.association :pony %>
+  <%= f.button :submit %>
+<% end %>
