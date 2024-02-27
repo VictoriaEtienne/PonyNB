@@ -1,0 +1,35 @@
+<% if user_signed_in? %>
+  <div id="dashboard-container">
+    <h1>Welcome, <%= current_user.first_name %>!</h1>
+
+    <div>
+      <h2>Your Bookings</h2>
+      <% if @booked_ponies.present? %>
+        <ul>
+          <% @booked_ponies.each do |pony| %>
+            <li><%= link_to pony.name, pony_path(pony) %></li>
+          <% end %>
+        </ul>
+      <% else %>
+        <p>You haven't booked any ponies yet.</p>
+      <% end %>
+    </div>
+
+    <div>
+      <h2>Booking Statistics</h2>
+      <p>Total Bookings: <%= @total_bookings %></p>
+      <p>Pending Bookings: <%= @pending_bookings %></p>
+      <p>Accepted Bookings: <%= @accepted_bookings %></p>
+      <p>Declined Bookings: <%= @declined_bookings %></p>
+    </div>
+
+    <!-- Add more sections as needed -->
+
+  </div>
+<% else %>
+  <!-- Display a welcome message and links to sign-in and sign-up pages -->
+  <h1>Welcome to the Pony Rental App</h1>
+  <p>This is the home page content. You can provide a brief introduction, features overview, or anything else you want to highlight on the home page.</p>
+  <%= link_to "Sign in", new_user_session_path %>
+  <%= link_to "Sign up", new_user_registration_path %>
+<% end %>
