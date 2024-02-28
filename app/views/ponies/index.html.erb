@@ -1,13 +1,19 @@
 <%= render "shared/banner" %>
 <div class="container">
   <div class="row">
-    <div class="col-xs-12 col-sm-10 col-sm-offset-1">
-      <h1>All Ponies</h1>
+    <div class="d-flex col-xs-12 col-sm-10 col-sm-offset-1">
       <ul class="list-group mb-3">
         <% @ponies.each do |pony| %>
-          <li class="list-group-item">
-            <%= link_to pony.name, pony_path(pony) %>
-          </li>
+        <div class="card-product">
+          <%= image_tag "/assets/pony_one.jpg", class: "small-pony-image" %>
+          <div class="card-product-infos">
+            <li class="list-group-item">
+              <%= link_to pony.name, pony_path(pony) %>
+            </li>
+            <li><strong>Price:</strong> <%= pony.price %>
+            </li>
+          </div>
+        </div>
         <% end %>
       </ul>
     </div>
