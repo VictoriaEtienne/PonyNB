@@ -24,7 +24,7 @@
         </div>
       </div>
       <div class="col-6">
-        <div style="width: 100%; height: 600px;"
+        <div style="width: 60%; height: 400px;"
           data-controller="map"
           data-map-markers-value="<%= @marker.to_json %>"
           data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
@@ -33,14 +33,15 @@
     </div>
     <div class="row">
       <div class="col-md-12">
-        <%= simple_form_for [@pony, @booking], html:{ class: "form-inline"} do |f| %>
-          <%= f.input :start_time,
-                as: :string,
-                input_html: { data: { controller: "datepicker" }, style: "display: none" } %>
-          <%= f.input :end_time,
-                as: :string,
-                input_html: { data: { controller: "datepicker" }, style: "display: none" } %>
-          <%= f.button :submit, class: "btn btn-primary btn-block", style: "margin-top: 20px;" %>
+        <%= simple_form_for [@pony, @booking], html: { class: "form-inline", data: { controller: "datepicker" } } do |f| %>
+          <%= f.input :start_time, as: :hidden, input_html: { data: { datepicker_target: 'startDateInput' }}  %>
+          <%= f.input :end_time, as: :hidden, input_html: { data: { datepicker_target: 'endDateInput' }} %>
+
+          <%= f.input :range, label: "Calendar" do %>
+            <%= text_field_tag :range, nil, class: "form-control", data: { datepicker_target: 'rangeInput' } %>
+          <% end %>
+
+          <%= f.submit 'Book now!', class: 'btn btn-primary' %>
         <% end %>
       </div>
     </div>
