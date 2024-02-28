@@ -23,13 +23,13 @@ class PoniesController < ApplicationController
     @pony = Pony.new(pony_params)
     @pony.user = current_user
     if @pony.save
-      redirect_to ponies_path(@pony)
+      redirect_to ponies_path
     else
       render :new
     end
   end
 
   def pony_params
-    params.require(:pony).permit(:name, :description, :price, :sex, :color, :discipline, :breed, :address)
+    params.require(:pony).permit(:name, :description, :price, :sex, :color, :discipline, :breed, :address, :photo)
   end
 end

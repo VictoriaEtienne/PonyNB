@@ -5,7 +5,11 @@
       <ul class="list-group mb-3">
         <% @ponies.each do |pony| %>
         <div class="card-product">
+        <% if pony.photo.attached? %>
+          <%= cl_image_tag pony.photo.key, height: 300, width: 400, crop: :fill %>
+        <% else %>
           <%= image_tag "/assets/pony_one.jpg", class: "small-pony-image" %>
+        <% end %>
           <div class="card-product-infos">
             <li class="list-group-item">
               <%= link_to pony.name, pony_path(pony) %>
