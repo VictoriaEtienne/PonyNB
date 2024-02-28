@@ -5,6 +5,7 @@ class PoniesController < ApplicationController
 
   def show
     @pony = Pony.find(params[:id])
+    @booking = Booking.new
   end
 
   def new
