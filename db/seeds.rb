@@ -17,16 +17,20 @@ email: "test@test.com",
 password: "123456"
 )
 
-50.times do
+10.times do
+  postal_code = Faker::Address.zip
+  city = Faker::Address.city
+
   Pony.create!(
     name: Faker::Creature::Horse.name,
-    price: Faker::Commerce.price(range: 300.0..15000.0),
+    price: Faker::Commerce.price(range: 300..15000),
     alias: Faker::Creature::Horse.name,
     sex: ['Male', 'Female'].sample,
     color: Faker::Color.color_name,
     breed: Faker::Creature::Horse.breed,
     discipline: ["Jumping", "Dressage", "Circus"].sample,
     description: "Modify it when creating your pony's listing.",
-    user: user
+    user: user,
+    address: "#{Faker::Address.street_address}, #{postal_code} #{city}"
   )
 end
