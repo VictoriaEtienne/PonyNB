@@ -10,7 +10,8 @@ class PoniesController < ApplicationController
     [{
       lat: @pony.latitude,
       lng: @pony.longitude,
-      info_window_html: render_to_string(partial: "info_window", locals: {pony: @pony})
+      info_window_html: render_to_string(partial: "info_window", locals: {pony: @pony}),
+      marker_html: render_to_string(partial: "marker")
     }]
   end
 
