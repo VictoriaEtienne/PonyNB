@@ -29,6 +29,6 @@ class PoniesController < ApplicationController
   end
 
   def pony_params
-    params.require(:pony).permit(:name, :description, :price, :sex, :color, :discipline, :breed)
+    params.require(:pony).permit(:name, :description, :price, :sex, :color, :discipline, :breed, :address)
   end
 end
