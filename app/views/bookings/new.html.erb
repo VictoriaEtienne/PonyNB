@@ -1,11 +1,12 @@
 <h1>Bookings#new</h1>
 <p>Find me in app/views/bookings/new.html.erb</p>
-<%= simple_form_for([@pony, @booking]) do |f| %>
+<%= simple_form_for([@pony, @booking], html: {data:{controller:"booking"}}) do |f| %>
   <%= f.input :start_time,
-            as: :string,
-            input_html: { data: { controller: "datepicker" } } %>
- <%= f.input :end_time,
-            as: :string,
-            input_html: { data: { controller: "datepicker" } } %>
+              as: :string,
+              input_html: { data: { controller: "datepicker", action: "change->booking#calculate_price" } } %>
+  <%= f.input :end_time,
+              as: :string,
+              input_html: { data: { controller: "datepicker", action: "change->booking#calculate_price" } } %>
+  <%= f.input :total_price, input_html: { readonly: true } %>
   <%= f.button :submit %>
 <% end %>

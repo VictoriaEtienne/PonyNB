@@ -10,10 +10,10 @@
         <%= f.input :price %>
         <%= f.input :description %>
         <%= f.input :alias %>
-        <%= f.input :sex %>
+        <%= f.input :sex, collection: ["Neutral", "Male", "Female"], include_blank: false %>
         <%= f.input :color %>
-        <%= f.input :discipline %>
-        <%= f.input :breed %>
+        <%= f.input :discipline, collection: ["Ride", "Circus", "Dance", "Obstacle"], include_blank: false %>
+        <%= f.input :breed, collection: ["Pony", "Double-Pony", "Unicorn", "Pur-Sang"], include_blank: false %>
         <%= f.input :address %>
         <%= f.submit class: 'btn btn-primary' %>
       <% end %>
