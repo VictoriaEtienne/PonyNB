@@ -4,14 +4,14 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-10 col-sm-offset-1">
-      <h1>Create a new pony</h1>
+      <h1>Rent my poney</h1>
       <%= simple_form_for @pony do |f| %>
         <%= f.input :name %>
         <%= f.input :price %>
         <%= f.input :description %>
-        <%= f.input :alias %>
-        <%= f.input :sex, collection: ["Neutral", "Male", "Female"], include_blank: false %>
-        <%= f.input :color %>
+        <%#= f.input :alias %>
+        <%= f.input :sex, collection: ["Male", "Female"], include_blank: false %>
+        <%= f.input :color, collection: ["White", "Brown", "Dark"], include_blank: false %>
         <%= f.input :discipline, collection: ["Ride", "Circus", "Dance", "Obstacle"], include_blank: false %>
         <%= f.input :breed, collection: ["Pony", "Double-Pony", "Unicorn", "Pur-Sang"], include_blank: false %>
         <%= f.input :address %>
