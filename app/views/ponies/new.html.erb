@@ -14,7 +14,7 @@
         <%= f.input :color %>
         <%= f.input :discipline, collection: ["Ride", "Circus", "Dance", "Obstacle"], include_blank: false %>
         <%= f.input :breed, collection: ["Pony", "Double-Pony", "Unicorn", "Pur-Sang"], include_blank: false %>
-        <%= f.input :address %>
+        <%= f.input :address, input_html: { data: { controller: "address-autocomplete" } } %>
         <%= f.submit class: 'btn btn-primary' %>
       <% end %>
       <%= link_to "Back to the homepage", ponies_path %>
