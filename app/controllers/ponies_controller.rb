@@ -6,6 +6,12 @@ class PoniesController < ApplicationController
   def show
     @pony = Pony.find(params[:id])
     @booking = Booking.new
+    @marker =
+    [{
+      lat: @pony.latitude,
+      lng: @pony.longitude,
+      #info_window_html: render_to_string(partial: "info_window", locals: {pony: ponies})
+    }]
   end
 
   def new
