@@ -32,77 +32,16 @@
     </div>
     <div class="row">
       <div class="col-md-12">
-        <%= simple_form_for([@pony, @booking]) do |f| %>
+        <%= simple_form_for [@pony, @booking], html:{ class: "form-inline"} do |f| %>
           <%= f.input :start_time,
                 as: :string,
-                input_html: { data: { controller: "datepicker" } } %>
+                input_html: { data: { controller: "datepicker" }, style: "display: none" } %>
           <%= f.input :end_time,
                 as: :string,
-                input_html: { data: { controller: "datepicker" } } %>
+                input_html: { data: { controller: "datepicker" }, style: "display: none" } %>
           <%= f.button :submit, class: "btn btn-primary btn-block", style: "margin-top: 20px;" %>
         <% end %>
       </div>
     </div>
   </div>
 </div>
-
-
-<style>
-  .card {
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin: 20px 0;
-  }
-
-  .container-listing {
-    padding: 20px;
-  }
-
-  .listing-info {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-  }
-
-  .pony-details {
-    flex: 1; /* Allow pony details to take available space */
-  }
-
-  .image-wrapper {
-    max-width: 400px; /* Adjust based on your design */
-    margin-top: 10px;
-  }
-
-  .small-pony-image {
-    max-width: 100%;
-    max-height: auto;
-    border-radius: 8px; /* Add a subtle border-radius to the image */
-  }
-
-  .details-list {
-    list-style-type: none;
-    padding: 0;
-    margin: 20px 0 0 0;
-  }
-
-  .details-list li {
-    margin-bottom: 5px;
-  }
-
-  .btn-primary,
-  .btn-outline-primary {
-    margin-top: 20px;
-    border-radius: 5px;
-  }
-
-  .btn-outline-primary {
-    background-color: transparent;
-    border-color: #28a745;
-    color: #28a745;
-  }
-
-  .btn-primary:hover {
-    background-color: #218838;
-  }
-</style>
