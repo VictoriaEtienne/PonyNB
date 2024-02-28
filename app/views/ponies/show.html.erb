@@ -1,55 +1,87 @@
-<div class="container-listing">
-  <div class="row listing-content">
-    <!-- Details box -->
-    <div class="listing col-md-8">
-      <div class="listing-info">
-        <div class="pony-details">
-          <h3 class="pony-name"><strong><%= @pony.name %></strong></h3>
-          <div class="image-wrapper">
-            <%= image_tag "/assets/pony_one.jpg", class: "small-pony-image" %>
+<div class="card">
+  <div class="card-body container-listing">
+    <div class="row listing-content">
+      <!-- Details box -->
+      <div class="listing col-md-8">
+        <div class="listing-info">
+          <div class="pony-details">
+            <h3 class="pony-name"><strong><%= @pony.name %></strong></h3>
+            <div class="image-wrapper">
+              <%= image_tag "/assets/pony_one.jpg", class: "small-pony-image" %>
+            </div>
           </div>
+          <ul class="details-list">
+            <li><strong>Description:</strong> <%= @pony.description %></li>
+            <li><strong>Price:</strong> <%= @pony.price %></li>
+            <li><strong>Alias:</strong> <%= @pony.alias %></li>
+            <li><strong>Sex:</strong> <%= @pony.sex %></li>
+            <li><strong>Color:</strong> <%= @pony.color %></li>
+            <li><strong>Discipline:</strong> <%= @pony.discipline %></li>
+            <li><strong>Breed:</strong> <%= @pony.breed %></li>
+          </ul>
         </div>
-        <ul class="details-list">
-          <li>Alias: <%= @pony.alias %></li>
-          <li>Sex: <%= @pony.sex %></li>
-          <li>Color: <%= @pony.color %></li>
-          <li>Discipline: <%= @pony.discipline %></li>
-          <li>Breed: <%= @pony.breed %></li>
-        </ul>
       </div>
     </div>
-  </div>
-  <div class="booking-section">
-    <%= link_to "Book this pony", new_pony_booking_path(@pony), class: "btn btn-primary" %>
+    <div class="booking-section">
+      <%= link_to "Book this pony", new_pony_booking_path(@pony), class: "btn btn-primary" %>
+    </div>
   </div>
 </div>
 
 <style>
+  .card {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 20px 0;
+  }
+
+  .container-listing {
+    padding: 20px;
+  }
+
   .listing-info {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
   }
 
+  .pony-details {
+    flex: 1; /* Allow pony details to take available space */
+  }
+
   .image-wrapper {
-    max-width: 500px;
-    margin-top: 10px; /* Set the maximum width for the image container */
+    max-width: 400px; /* Adjust based on your design */
+    margin-top: 10px;
   }
 
   .small-pony-image {
-    max-width: 100%; /* Set the maximum width for the image */
-    max-height: auto; /* Maintain the image's aspect ratio */
+    max-width: 100%;
+    max-height: auto;
+    border-radius: 8px; /* Add a subtle border-radius to the image */
   }
 
   .details-list {
     list-style-type: none;
     padding: 0;
-    margin: 0;
+    margin: 20px 400px 0 0;
     margin-top: 60px;
-    margin-right: 200px;
   }
 
   .details-list li {
     margin-bottom: 5px;
+  }
+
+  .btn-primary {
+    background-color: #28a745;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 20px;
+  }
+
+  .btn-primary:hover {
+    background-color: #218838;
   }
 </style>
