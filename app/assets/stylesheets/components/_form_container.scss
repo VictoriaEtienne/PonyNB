@@ -1,0 +1,10 @@
+.outer-container {
+  background-color: white; /* Set the background color outside the container */
+  padding: 20px; /* Add padding for better spacing */
+}
+
+.container {
+  border: 2px solid black; /* Add border to the container */
+  padding: 20px; /* Add padding for better spacing */
+  border-radius: 10px; /* Optional: Add border radius for rounded corners */
+}
