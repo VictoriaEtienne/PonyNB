@@ -1,6 +1,7 @@
 // Import Google fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito:400,700|Work+Sans:400,700&display=swap');
 
+
 // Define fonts for body and headers
 $body-font: "Work Sans", "Helvetica", "sans-serif";
 $headers-font: "Nunito", "Helvetica", "sans-serif";
@@ -14,3 +15,13 @@ $headers-font: "Nunito", "Helvetica", "sans-serif";
 //        font-url('FontFile.ttf') format('truetype')
 // }
 // $my-font: "Font Name";
+
+// .honk-<h1> {
+//   font-family: "Honk", system-ui;
+//   font-optical-sizing: auto;
+//   font-weight: 400;
+//   font-style: normal;
+//   font-variation-settings:
+//     "MORF" 15,
+//     "SHLN" 50;
+// }
