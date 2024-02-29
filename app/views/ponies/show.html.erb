@@ -31,16 +31,18 @@
   </div>
   <div class="row">
     <div class="col-4">
-      <%= simple_form_for [@pony, @booking], html: { class: "form-inline", data: { controller: "datepicker" } } do |f| %>
-          <%= f.input :start_time, as: :hidden, input_html: { data: { datepicker_target: 'startDateInput' }}  %>
-          <%= f.input :end_time, as: :hidden, input_html: { data: { datepicker_target: 'endDateInput' }} %>
+    <% if @pony.user != current_user %>
+        <%= simple_form_for [@pony, @booking], html: { class: "form-inline", data: { controller: "datepicker" } } do |f| %>
+            <%= f.input :start_time, as: :hidden, input_html: { data: { datepicker_target: 'startDateInput' }}  %>
+            <%= f.input :end_time, as: :hidden, input_html: { data: { datepicker_target: 'endDateInput' }} %>
 
-          <%= f.input :range, label: "Check the Calendar" do %>
-            <%= text_field_tag :range, nil, class: "form-control", data: { datepicker_target: 'rangeInput' } %>
+            <%= f.input :range, label: "Check the Calendar" do %>
+              <%= text_field_tag :range, nil, class: "form-control", data: { datepicker_target: 'rangeInput' } %>
+            <% end %>
+
+           <%= f.submit 'Book now!', class: 'btn btn-primary' %>
           <% end %>
-
-          <%= f.submit 'Book now!', class: 'btn btn-primary' %>
-        <% end %>
+      <% end %>
     </div>
   </div>
 </div>

@@ -26,16 +26,19 @@
     <!-- Add more sections as needed -->
     <% @ponies.each do |pony| %>
       <% pony.bookings.each do |booking| %>
-        <p>You have a request on </p> <%= pony.name %> <%= booking.status %> <%= button_to "Accept", accept_booking_path(booking), method: "patch"  %>
-        <%= button_to "Decline", decline_booking_path(booking), method: "patch"  %>
+        <% if booking.status == "Pending" %>
+          <p>You have a request on </p> <%= pony.name %> <%= booking.status %>
+          <%= button_to "Accept", accept_booking_path(booking), method: "patch", class: "btn btn-success", onclick: "handleButtonClick(this)"  %>
+          <%= button_to "Decline", decline_booking_path(booking), method: "patch", class: "btn btn-danger", onclick: "handleButtonClick(this)"  %>
+        <% end %>
       <% end %>
     <% end %>
 
+    <script>
+      function refreshPage() {
+        location.reload();
+      }
+    </script>
+
   </div>
-<% else %>
-  <!-- Display a welcome message and links to sign-in and sign-up pages -->
-  <h1>Welcome to the Pony Rental App</h1>
-  <p>This is the home page content. You can provide a brief introduction, features overview, or anything else you want to highlight on the home page.</p>
-  <%= link_to "Sign in", new_user_session_path %>
-  <%= link_to "Sign up", new_user_registration_path %>
 <% end %>
