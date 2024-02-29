@@ -1,6 +1,9 @@
 class PoniesController < ApplicationController
   def index
     @ponies = Pony.all
+    if params[:query].present?
+      @ponies = @ponies.where("name ILIKE ?", "%#{params[:query]}%")
+    end
   end
 
   def show
