@@ -2,7 +2,7 @@ class PoniesController < ApplicationController
   def index
     @ponies = Pony.all
     if params[:query].present?
-      @ponies = @ponies.where("name ILIKE ?", "%#{params[:query]}%")
+      @ponies = Pony.search_by_name_and_price(params[:query])
     end
   end
 
