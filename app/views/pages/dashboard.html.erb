@@ -1,13 +1,19 @@
 <% if user_signed_in? %>
-  <div id="dashboard-container">
-    <h1>Welcome, <%= @user.first_name %>!</h1>
+  <div id="dashboard-container" class="dashboard">
+    <h1>Welcome to your dashboard!</h1>
 
-    <div>
+    <div class="section">
       <h2>Your Bookings</h2>
       <% if @booked_ponies.present? %>
         <ul>
           <% @booked_ponies.each do |pony| %>
-            <li><%= link_to pony.name, pony_path(pony) %></li>
+            <div class="booking-details">
+              <li><%= link_to pony.name, pony_path(pony) %></li>
+              <img src="<%= pony.photo.url %>" alt="<%= pony.name %> Photo">
+              <% pony.bookings.each do |booking| %>
+                <p>Date of Reservation: <%= booking.start_time %> to <%= booking.end_time %></p>
+              <% end %>
+            </div>
           <% end %>
         </ul>
       <% else %>
@@ -15,27 +21,34 @@
       <% end %>
     </div>
 
-    <div>
+    <div class="section">
       <h2>Booking Statistics</h2>
-      <p>Total Bookings: <%= @total_bookings %></p>
-      <p>Pending Bookings: <%= @pending_bookings %></p>
-      <p>Accepted Bookings: <%= @accepted_bookings %></p>
-      <p>Declined Bookings: <%= @declined_bookings %></p>
+      <div class="stats">
+        <p>Total Bookings: <%= @total_bookings %></p>
+        <p>Pending Bookings: <%= @pending_bookings %></p>
+        <p>Accepted Bookings: <%= @accepted_bookings %></p>
+        <p>Declined Bookings: <%= @declined_bookings %></p>
+      </div>
     </div>
 
-    <!-- Add more sections as needed -->
-    <% @ponies.each do |pony| %>
-      <% pony.bookings.each do |booking| %>
-        <p>You have a request on </p> <%= pony.name %> <%= booking.status %> <%= button_to "Accept", accept_booking_path(booking), method: "patch"  %>
-        <%= button_to "Decline", decline_booking_path(booking), method: "patch"  %>
+    <!-- Section for pending booking requests -->
+    <div class="section">
+      <h2>Pending Booking Requests</h2>
+      <% @ponies.each do |pony| %>
+        <% pony.bookings.each do |booking| %>
+          <% if booking.status == "Pending" %>
+            <div class="booking-request" data-booking-id="<%= booking.id %>">
+              <p>You have a request on <%= pony.name %> <%= booking.status %></p>
+              <%= button_to "Accept", accept_booking_path(booking), method: "patch", class: "btn btn-success", onclick: "handleButtonClick(this)"  %>
+              <%= button_to "Decline", decline_booking_path(booking), method: "patch", class: "btn btn-danger", onclick: "handleButtonClick(this)"  %>
+            </div>
+          <% end %>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
 
+    <script>
+      // ... (your existing script)
+    </script>
   </div>
-<% else %>
-  <!-- Display a welcome message and links to sign-in and sign-up pages -->
-  <h1>Welcome to the Pony Rental App</h1>
-  <p>This is the home page content. You can provide a brief introduction, features overview, or anything else you want to highlight on the home page.</p>
-  <%= link_to "Sign in", new_user_session_path %>
-  <%= link_to "Sign up", new_user_registration_path %>
 <% end %>
