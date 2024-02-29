@@ -82,24 +82,7 @@ img {
 /* Style the datepicker input */
 .form-control {
   width: 100%;
-  padding: 12px;
   border: 1px solid #ddd;
   border-radius: 4px;
-  margin-bottom: 10px;
-}
-
-/* Style the submit button */
-.btn-outline-success {
-  background-color: #4caf50;
-  color: #fff;
-  border: 1px solid #4caf50;
-  border-radius: 4px;
-  padding: 12px 19px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-/* Hover effect for the submit button */
-.btn-outline-success:hover {
-  background-color: #45a049;
+  margin-bottom: 16px;
 }
