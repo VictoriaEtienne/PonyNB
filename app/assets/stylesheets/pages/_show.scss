@@ -1,12 +1,6 @@
-.card {
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  margin: 20px 0;
-}
-
-.container-listing {
-  padding: 20px;
+.container {
+  top: 10px;
+  margin: 50px 50px 50px 50px;
 }
 
 .listing-info {
@@ -15,19 +9,9 @@
   align-items: flex-start;
 }
 
-.pony-details {
-  flex: 1; /* Allow pony details to take available space */
-}
-
 .image-wrapper {
-  max-width: 400px; /* Adjust based on your design */
   margin-top: 10px;
-}
-
-.small-pony-image {
-  max-width: 100%;
-  max-height: auto;
-  border-radius: 8px; /* Add a subtle border-radius to the image */
+  border-radius: 8px;
 }
 
 .details-list {
@@ -55,6 +39,8 @@
   background-color: #218838;
 }
 
-.form-inline div {
-  display: inline-block;
+.col-4 {
+  border-radius: 15px;
+  bottom: 8px;
+  top: 20px;
 }
