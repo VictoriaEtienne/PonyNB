@@ -1,3 +1,30 @@
 // Import page-specific CSS files here.
 @import "home";
 @import "show";
+
+body {
+  color: grey;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0;
+  padding: 1rem;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -moz-font-feature-settings: "liga" on;
+}
+
+// <uniquifier>: Use a unique and descriptive class name
+
+.btn {
+  background-color: white;
+  border: 1px solid grey;
+  //border-radius: 1rem;
+  color: grey;
+  padding: 0.5rem;
+  text-transform: lowercase;
+}
+
+a {
+  text-decoration: none;
+}

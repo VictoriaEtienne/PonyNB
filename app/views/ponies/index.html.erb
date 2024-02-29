@@ -1,34 +1,37 @@
 <%= render "shared/banner" %>
 <div class="container fluid">
-  <div class="row justify-content-center">
-    <div class="col-sm-8 my-3">
+  <div class="row grid-template-rows: auto;h justify-content: center;">
+    <div class="col-sm-4 my-3 ">
       <%= form_with url: ponies_path, method: :get, class: "d-flex" do %>
         <%= text_field_tag :query,
               params[:query],
               class: "form-control",
-              placeholder: "Type a pony name"
+              placeholder: "Type a pony name or a price"
           %>
         <%= submit_tag "Search", name: "", class: "btn btn-outline-success" %>
       <% end %>
     </div>
   </div>
-  <div class="row justify-content-center">
-    <div class="col-sm-8 my-3">
+  <div class="row grid-template-rows: auto;h">
+    <div class="col-sm-12 my-3">
       <div class="cards">
         <% @ponies.each do |pony| %>
-        <div class="card d-flex align-items-center" style="width: 18rem;">
-          <% if pony.photo.attached? %>
-          <%= cl_image_tag pony.photo.key, class: "small-pony-image img-fluid" %>
-          <% else %>
-          <%= image_tag "/assets/pony_one.jpg", class: "small-pony-image img-fluid" %>
+          <%= link_to pony_path(pony) do %>
+            <div class="card-trip">
+              <% if pony.photo.attached? %>
+                <%= cl_image_tag pony.photo.key, class: "small-pony-image img-fluid" %>
+                <% else %>
+                <%= image_tag "/assets/pony_one.jpg", class: "small-pony-image img-fluid" %>
+              <% end %>
+              <div class="card-trip-infos">
+                <div>
+                  <h2><%= pony.name%></h2>
+                  <p><%= pony.description%></p>
+                </div>
+                <h2 class="card-trip-pricing"><%= pony.price%>$</h2>
+              </div>
+            </div>
           <% end %>
-        <div class="card-body">
-          <h5 class="card-title"><%= pony.name%></h5>
-          <p class="card-text"><%= pony.price%>$</p>
-          <p class="card-text-description"><%= pony.description%></p>
-          <%= link_to "Rent this pony", pony_path(pony), class:"btn btn-outline-success"%>
-        </div>
-        </div>
         <% end %>
       </div>
     </div>

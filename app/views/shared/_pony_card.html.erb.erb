@@ -1,0 +1,7 @@
+<div class="booking-details">
+  <%= link_to pony.name, pony_path(pony) %>
+  <%= image_tag (pony.photo.attached? ? pony.photo : "/assets/pony_one.jpg"), class: "small-pony-image img-fluid" %>
+  <% pony.bookings.each do |booking| %>
+    <p>Date of Reservation: <%= booking.start_time %> to <%= booking.end_time %></p>
+  <% end %>
+</div>
