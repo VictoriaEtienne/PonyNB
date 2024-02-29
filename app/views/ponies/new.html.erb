@@ -8,16 +8,16 @@
       <div class="col-xs-12 col-sm-10 col-sm-offset-1">
         <h2>Enter your pony details</h2>
         <%= simple_form_for @pony do |f| %>
-          <%= f.input :name %>
-          <%= f.input :price %>
-          <%= f.input :description %>
+          <%= f.input :name , label_html: { style: 'font-weight: bold;' } %>
+          <%= f.input :price, label_html: { style: 'font-weight: bold;' } %>
+          <%= f.input :description, label_html: { style: 'font-weight: bold;' } %>
           <%#= f.input :alias %>
-          <%= f.input :sex, collection: ["Male", "Female"], include_blank: false %>
+          <%= f.input :sex, label_html: { style: 'font-weight: bold;' }, collection: ["Male", "Female"], include_blank: false %>
           <%= f.input :color, collection: [["White", "white"], ["Brown", "brown"], ["Dark", "dark"]], as: :radio_buttons, include_blank: false %>
-          <%= f.input :discipline, collection: ["Ride", "Circus", "Dance", "Obstacle"], include_blank: false %>
-          <%= f.input :breed, collection: ["Pony", "Double-Pony", "Unicorn", "Pur-Sang"], include_blank: false %>
-          <%= f.input :photo, as: :file %>
-          <%= f.input :address, input_html: { data: { controller: "address-autocomplete" } } %>
+          <%= f.input :discipline, label_html: { style: 'font-weight: bold;' }, collection: ["Ride", "Circus", "Dance", "Obstacle"], include_blank: false %>
+          <%= f.input :breed, label_html: { style: 'font-weight: bold;' }, collection: ["Pony", "Double-Pony", "Unicorn", "Pur-Sang"], include_blank: false %>
+          <%= f.input :photo, label_html: { style: 'font-weight: bold;' }, as: :file %>
+          <%= f.input :address, label_html: { style: 'font-weight: bold;' }, input_html: { data: { controller: "address-autocomplete" } } %>
           <%= f.submit class: 'btn btn-primary' %>
         <% end %>
         <%= link_to "Back to the homepage", ponies_path %>
