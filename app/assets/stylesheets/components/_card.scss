@@ -21,6 +21,14 @@ a {
   text-decoration: none;
 }
 
+.small-pony-image {
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
 
 // Smallest device
 @media (min-width: 100px) and (max-width: 575px) {
