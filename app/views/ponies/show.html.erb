@@ -1,49 +1,46 @@
-<div class="card">
-  <div class="card-body container-listing">
-    <div class="row listing-content">
-      <!-- Details box -->
-      <div class="listing col-md-6">
-        <div class="listing-info">
-          <div class="pony-details">
-            <h3 class="pony-name"><strong><%= @pony.name %></strong></h3>
-            <div class="image-wrapper">
-              <%= image_tag "/assets/pony_one.jpg", class: "small-pony-image" %>
-            </div>
-          </div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4" class="image-wrapper">
+      <% if @pony.photo.attached? %>
+        <%= cl_image_tag @pony.photo.key, height: 300, width: 400, crop: :fill  %>
+      <% else %>
+        <%= image_tag "/assets/data_base_img/pony_17.jpg", style: "width: 100%; height: auto;"%>
+      <% end %>
+    </div>
+    <div class="col-md-4">
+      <div class="listing-info">
           <ul class="details-list">
+            <h2 class="pony-name"><strong><%= @pony.name %></strong></h2>
             <li><strong>Description:</strong> <%= @pony.description %></li>
             <li><strong>Price:</strong> <%= @pony.price %></li>
-            <!--<li><strong>Alias:</strong> <%= @pony.alias %></li>-->
             <li><strong>Sex:</strong> <%= @pony.sex %></li>
             <li><strong>Color:</strong> <%= @pony.color %></li>
             <li><strong>Discipline:</strong> <%= @pony.discipline %></li>
             <li><strong>Breed:</strong> <%= @pony.breed %></li>
-            <li><strong>Photo:</strong> <%= @pony.photo %></li>
             <li><strong>Address:</strong> <%= @pony.address %></li>
           </ul>
         </div>
-      </div>
-      <div class="col-6">
-        <div style="width: 60%; height: 400px;"
-          data-controller="map"
-          data-map-markers-value="<%= @marker.to_json %>"
-          data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-        </div>
-      </div>
     </div>
-    <div class="row">
-      <div class="col-md-12">
-        <%= simple_form_for [@pony, @booking], html: { class: "form-inline", data: { controller: "datepicker" } } do |f| %>
+      <div class="col-md-4">
+        <div style="width: 100%; height: 400px;"
+            data-controller="map"
+            data-map-markers-value="<%= @marker.to_json %>"
+            data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+        </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-4">
+      <%= simple_form_for [@pony, @booking], html: { class: "form-inline", data: { controller: "datepicker" } } do |f| %>
           <%= f.input :start_time, as: :hidden, input_html: { data: { datepicker_target: 'startDateInput' }}  %>
           <%= f.input :end_time, as: :hidden, input_html: { data: { datepicker_target: 'endDateInput' }} %>
 
-          <%= f.input :range, label: "Calendar" do %>
+          <%= f.input :range, label: "Check the Calendar" do %>
             <%= text_field_tag :range, nil, class: "form-control", data: { datepicker_target: 'rangeInput' } %>
           <% end %>
 
           <%= f.submit 'Book now!', class: 'btn btn-primary' %>
         <% end %>
-      </div>
     </div>
   </div>
 </div>
