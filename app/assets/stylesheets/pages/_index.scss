@@ -2,10 +2,6 @@
 @import "home";
 @import "show";
 
-.container  index {
-
-}
-
 body {
   font-style: normal;
   font-weight: 400;
@@ -28,7 +24,6 @@ body {
   background-color: white;
   border: 1px solid grey;
   //border-radius: 1rem;
-  color: grey;
   padding: 0.5rem;
   text-transform: lowercase;
 }
@@ -49,7 +44,7 @@ a {
 .title h2{
   font-family: "Pacifico", cursive;
   text-align: center;
-  padding: 1em;
+  padding-bottom: 1em;
   font-size: larger;
   opacity: 0.8;
 }
