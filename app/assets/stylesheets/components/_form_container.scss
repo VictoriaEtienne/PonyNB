@@ -8,3 +8,33 @@
   padding: 20px; /* Add padding for better spacing */
   border-radius: 10px; /* Optional: Add border radius for rounded corners */
 }
+
+.outer-container-1 {
+  padding: 20px;
+}
+
+.content-container {
+  height: 100%;
+}
+
+.left-container {
+  background-color: #f0f0f0; /* Optional: Add a background color for the left container */
+}
+
+.left-image {
+  max-width: 100%;
+  height: auto;
+}
+
+.right-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  /* For smaller screens, make the columns stack on top of each other */
+  .col-xs-12 {
+      width: 100%;
+  }
+}
