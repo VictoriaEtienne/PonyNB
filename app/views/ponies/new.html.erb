@@ -1,27 +1,38 @@
-<div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= asset_path('data_base_img/pony_23.jpg') %>)">
+<div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= asset_path('data_base_img/pony_23.jpg') %>); color: white;">
   <h1>Rent your pony</h1>
 </div>
 
-<div class="outer-container ">
+
+<div class="outer-container-1">
     <div class="row justify-content-center">
-      <div class="col-xs-12 col-sm-7 col-sm-offset-1 new-container">
-        <h2>Enter your pony details</h2>
-        <%= simple_form_for @pony do |f| %>
-          <%= f.input :name , label_html: { style: 'font-weight: bold;' } %>
-          <%= f.input :price, label_html: { style: 'font-weight: bold;' } %>
-          <%= f.input :description, label_html: { style: 'font-weight: bold;' } %>
-          <%#= f.input :alias %>
-          <%= f.input :sex, label_html: { style: 'font-weight: bold;' }, collection: ["Male", "Female"], include_blank: false %>
-          <%= f.input :color, collection: [["White", "white"], ["Brown", "brown"], ["Dark", "dark"]], as: :radio_buttons, include_blank: false %>
-          <%= f.input :discipline, label_html: { style: 'font-weight: bold;' }, collection: ["Ride", "Circus", "Dance", "Obstacle"], include_blank: false %>
-          <%= f.input :breed, label_html: { style: 'font-weight: bold;' }, collection: ["Pony", "Double-Pony", "Unicorn", "Pur-Sang"], include_blank: false %>
-          <%= f.input :photo, label_html: { style: 'font-weight: bold;' }, as: :file %>
-          <%= f.input :address, label_html: { style: 'font-weight: bold;' }, input_html: { data: { controller: "address-autocomplete" } } %>
-          <%= f.submit class: 'btn btn-outline-success' %>
-        <% end %>
-        <br>
-       <%= link_to "Back to the homepage", ponies_path, class:"btn btn-outline-success" %>
-      </div>
+        <div class="col-xs-12 col-sm-6">
+            <!-- Container for the left side: Picture -->
+            <div class="content-container left-container">
+                <img src="/assets/data_base_img/pony_12.jpg" alt="Pony Image" class="left-image">
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6">
+            <!-- Container for the right side: Form -->
+            <div class="content-container right-container">
+                <div class="new-container">
+                    <h2>Enter your pony details</h2>
+                    <%= simple_form_for @pony do |f| %>
+                        <!-- Your form inputs here -->
+                        <%= f.input :name , label_html: { style: 'font-weight: bold;' } %>
+                        <%= f.input :price, label_html: { style: 'font-weight: bold;' } %>
+                        <%= f.input :description, label_html: { style: 'font-weight: bold;' } %>
+                        <%#= f.input :alias %>
+                        <%= f.input :sex, label_html: { style: 'font-weight: bold;' }, collection: ["Male", "Female"], include_blank: false %>
+                        <%= f.input :color, collection: [["White", "white"], ["Brown", "brown"], ["Dark", "dark"]], as: :radio_buttons, include_blank: false %>
+                        <%= f.input :discipline, label_html: { style: 'font-weight: bold;' }, collection: ["Ride", "Circus", "Dance", "Obstacle"], include_blank: false %>
+                        <%= f.input :breed, label_html: { style: 'font-weight: bold;' }, collection: ["Pony", "Double-Pony", "Unicorn", "Pur-Sang"], include_blank: false %>
+                        <%= f.input :photo, label_html: { style: 'font-weight: bold;' }, as: :file %>
+                        <%= f.input :address, label_html: { style: 'font-weight: bold;' }, input_html: { data: { controller: "address-autocomplete" } } %>
+                        <%= f.submit 'Rent my poney', class: 'btn btn-outline-success' %>
+                    <% end %>
+                    <%= link_to "Homepage", ponies_path, class:"btn btn-outline-success" %>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
