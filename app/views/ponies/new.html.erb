@@ -27,9 +27,9 @@
                         <%= f.input :breed, label_html: { style: 'font-weight: bold;' }, collection: ["Pony", "Double-Pony", "Unicorn", "Pur-Sang"], include_blank: false %>
                         <%= f.input :photo, label_html: { style: 'font-weight: bold;' }, as: :file %>
                         <%= f.input :address, label_html: { style: 'font-weight: bold;' }, input_html: { data: { controller: "address-autocomplete" } } %>
-                        <%= f.submit 'Rent my poney', class: 'btn btn-outline-success' %>
+                        <%= f.submit 'Rent my poney', class: 'rainbow-2 btn btn-outline-success' %>
                     <% end %>
-                    <%= link_to "Homepage", ponies_path, class:"btn btn-outline-success" %>
+                    <%= link_to "Homepage", ponies_path, class:"rainbow-2 btn btn-outline-success" %>
                 </div>
             </div>
         </div>
