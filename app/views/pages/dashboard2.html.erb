@@ -1,5 +1,4 @@
 <% if user_signed_in? %>
-<div class="container dashboard">
   <div id="dashboard-container" class="dashboard">
     <h1>Welcome to your dashboard!</h1>
 
@@ -22,16 +21,6 @@
       <% end %>
     </div>
 
-    <div class="section">
-      <h2>Booking Statistics</h2>
-      <div class="stats">
-        <p>Total Bookings: <%= @total_bookings %></p>
-        <p>Pending Bookings: <%= @pending_bookings %></p>
-        <p>Accepted Bookings: <%= @accepted_bookings %></p>
-        <p>Declined Bookings: <%= @declined_bookings %></p>
-      </div>
-    </div>
-
     <!-- Section for pending booking requests -->
     <div class="section">
       <h2>Pending Booking Requests</h2>
@@ -46,7 +35,23 @@
           <% end %>
         <% end %>
       <% end %>
-      </div>
     </div>
+
+    <script>
+      // ... (your existing script)
+    </script>
   </div>
 <% end %>
+
+
+
+    <h1 class="title">Manage your booking here</h1>
+    <p>You currently have <%= @total_bookings %> bookings</p>
+    <div class="main-section">
+      <div class="analyse">
+        <div class="total-bookings">
+          <div class="booking-card">
+          </div>
+        </div>
+      </div>
+    </div>
