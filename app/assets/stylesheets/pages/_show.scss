@@ -18,6 +18,7 @@ h2, ul, li {
   display: flex;
   flex-wrap: wrap;
   margin: 0 -15px;
+  padding: 1em;
 }
 
 /* Style the columns */
@@ -39,7 +40,6 @@ h2, ul, li {
 img {
   height: auto;
   display: block;
-  border-radius: 10px;
 }
 
 /* Style the listing info */
@@ -78,5 +78,4 @@ img {
   width: 100%;
   border: 1px solid #ddd;
   border-radius: 4px;
-  margin-bottom: 16px;
 }

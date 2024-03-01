@@ -1,10 +1,14 @@
 // Import Google fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito:400,700|Work+Sans:400,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Honk&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Honk&family=Pacifico&display=swap')
 
 
 // Define fonts for body and headers
-$body-font: "Work Sans", "Helvetica", "sans-serif";
-$headers-font: "Nunito", "Helvetica", "sans-serif";
+$body-font: "Pacifico", cursive;
+$headers-font: "Pacifico", cursive;
+$banner-font: "Honk", system-ui !important;
+
 
 // To use a font file (.woff) uncomment following lines
 // @font-face {
@@ -16,12 +20,19 @@ $headers-font: "Nunito", "Helvetica", "sans-serif";
 // }
 // $my-font: "Font Name";
 
-// .honk-<h1> {
-//   font-family: "Honk", system-ui;
-//   font-optical-sizing: auto;
+.banner h1 {
+  font-family: "Honk", system-ui;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-size: 80px;
+  font-style: normal;
+  font-variation-settings:
+    "MORF" 15,
+    "SHLN" 50;
+}
+
+// .title h2 {
+//   font-family: "Pacifico", cursive;
 //   font-weight: 400;
 //   font-style: normal;
-//   font-variation-settings:
-//     "MORF" 15,
-//     "SHLN" 50;
 // }
