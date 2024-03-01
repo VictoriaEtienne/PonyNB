@@ -35,11 +35,9 @@
         <%= simple_form_for [@pony, @booking], html: { class: "form-inline", data: { controller: "datepicker" } } do |f| %>
             <%= f.input :start_time, as: :hidden, input_html: { data: { datepicker_target: 'startDateInput' }}  %>
             <%= f.input :end_time, as: :hidden, input_html: { data: { datepicker_target: 'endDateInput' }} %>
-
             <%= f.input :range, label: "Check the Calendar" do %>
               <%= text_field_tag :range, nil, class: "form-control", data: { datepicker_target: 'rangeInput' } %>
             <% end %>
-
            <%= f.submit 'Book now!', class:"rainbow-2 btn btn-outline-success" %>
           <% end %>
       <% end %>
@@ -51,11 +49,12 @@
   <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= asset_path "1.jpg" %>); color: white;">
     Trust
   </div>
-
   <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= asset_path "2.jpg" %>); color: white;">
     Love
   </div>
-
+  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= asset_path "2.jpg" %>); color: white;">
+    Love
+  </div>
   <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= asset_path "5.jpg" %>); color: white;">
     Freedom
   </div>
