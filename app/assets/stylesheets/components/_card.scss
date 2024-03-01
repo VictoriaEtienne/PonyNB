@@ -8,7 +8,6 @@
   box-shadow: 0 0 20px rgba(0,0,0,0.1);
 }
 
-
 .flexbox {
   display: flex;
   justify-content: space-between;
@@ -95,12 +94,14 @@ a {
 }
 
 .card-trip h2 {
+  font-family: "Pacifico", cursive;
   font-size: 16px;
   font-weight: bold;
   margin: 0;
 }
 
 .card-trip p {
+  font-family: "Pacifico", cursive;
   font-size: 12px;
   opacity: .7;
   margin: 0;
