@@ -2,6 +2,10 @@
 @import "home";
 @import "show";
 
+.container index {
+
+}
+
 body {
   font-style: normal;
   font-weight: 400;
@@ -10,6 +14,12 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -moz-font-feature-settings: "liga" on;
+  background: linear-gradient(to right,
+    #000000 0%,
+    #C3168F 25%,
+    #F392C9 50%,
+    #D98B24 75%,
+    #B74E83 100%);
 }
 
 // <uniquifier>: Use a unique and descriptive class name
@@ -25,4 +35,25 @@ body {
 
 a {
   text-decoration: none;
+}
+
+.p {
+  font-family: "Pacifico", cursive;
+  font-weight: 400;
+  font-style: normal;
+  text-align: center;
+  padding :1em;
+  opacity: 0.8;
+}
+
+.title h2{
+  font-family: "Pacifico", cursive;
+  text-align: center;
+  padding: 1em;
+  font-size: larger;
+  opacity: 0.8;
+}
+
+.search{
+  font-family: "Pacifico", cursive;
 }
