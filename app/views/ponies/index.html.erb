@@ -1,6 +1,5 @@
 <%= render "shared/banner" %>
-<div class="container">
-
+<div class="container index">
   <div class="row grid-template-rows: auto;h justify-content-center">
     <div class="title h2">
       <h2>All our ponies for rent</h2>
@@ -18,23 +17,26 @@
   </div>
   <div class="row grid-template-rows: auto;h">
     <div class="col-sm-12 my-3">
-    <%= render "shared/pony_card" %>
+      <div class="cards">
+        <% @ponies.each do |pony| %>
+          <%= link_to pony_path(pony) do %>
+            <div class="card-trip">
+              <% if pony.photo.attached? %>
+                <%= cl_image_tag pony.photo.key, class: "small-pony-image img-fluid" %>
+                <% else %>
+                <%= image_tag "/assets/pony_one.jpg", class: "small-pony-image img-fluid" %>
+              <% end %>
+              <div class="card-trip-infos">
+                <div>
+                  <h2><%= pony.name%></h2>
+                  <p><%= pony.description%></p>
+                </div>
+                <h2 class="card-trip-pricing"><%= pony.price%>$</h2>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
