@@ -1,54 +1,143 @@
-<% if user_signed_in? %>
-  <div id="dashboard-container" class="dashboard">
-    <h1>Welcome to your dashboard!</h1>
-
-    <div class="section">
-      <h2>Your Bookings</h2>
-      <% if @booked_ponies.present? %>
-        <ul>
-          <% @booked_ponies.each do |pony| %>
-            <div class="booking-details">
-              <li><%= link_to pony.name, pony_path(pony) %></li>
-              <img src="<%= pony.photo.url %>" alt="<%= pony.name %> Photo">
-              <% pony.bookings.each do |booking| %>
-                <p>Date of Reservation: <%= booking.start_time %> to <%= booking.end_time %></p>
-              <% end %>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<body>
+    <div class="container">
+        <!-- Sidebar Section -->
+        <aside>
+            <div class="sidebar">
+                <header class="toggle">
+                        <div class="logo">
+                        <h2><span class="danger">Menu</span>  NB</h2>
+                    </div>
+                    <button class="close" id="close-btn">
+                        <span class="material-icons-sharp">close</span>
+                    </button>
+                </header>
+                <nav class="menu">
+                    <a href="#" class="active">
+                        <span class="material-icons-sharp">
+                            insert_chart_outlined
+                        </span>
+                        <h3>Overview</h3>
+                    </a>
+                </nav>
             </div>
-          <% end %>
-        </ul>
-      <% else %>
-        <p>You haven't booked any ponies yet.</p>
-      <% end %>
-    </div>
+        </aside>
+        <!-- End of Sidebar Section -->
+        <!-- Main Section -->
+        <main>
+            <div class="main-container">
+                <h1 class="title dashboard">Welcome, <span class="danger">Williams</span></h1>
+                <p>You currently have <%= @total_bookings %> bookings in total</p>
+                <!-- End of Title Section -->
+                <div class="main-section">
+                    <!-- Cards Section -->
+                    <div class="analyse">
+                        <div class="st-denis ">
+                            <div class="card">
 
-    <div class="section">
-      <h2>Booking Statistics</h2>
-      <div class="stats">
-        <p>Total Bookings: <%= @total_bookings %></p>
-        <p>Pending Bookings: <%= @pending_bookings %></p>
-        <p>Accepted Bookings: <%= @accepted_bookings %></p>
-        <p>Declined Bookings: <%= @declined_bookings %></p>
-      </div>
-    </div>
+                                <h1>Pending Bookings</h1>
+                                <div class="info">
+                                    <div class="booking">
+                                        <h2><%= @pending_bookings  %></h2>
+                                        <small>Booking</small>
+                                    </div>
+                                    <div class="check-in">
+                                        <h2>19</h2>
+                                        <small>Check In</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <p>Saint-Denis</p>
+                        </div>
+                        <div class="blackwater">
+                            <div class="card">
 
-    <!-- Section for pending booking requests -->
-    <div class="section">
+                                <h1>Accepted Bookings</h1>
+                                <div class="info">
+                                    <div class="booking">
+                                        <h2><%= @accepted_bookings %></h2>
+                                        <small>Booking</small>
+                                    </div>
+                                    <div class="check-in">
+                                        <h2>5</h2>
+                                        <small>Check In</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <p>Blackwater</p>
+                        </div>
+                        <div class="st-denis">
+                            <div class="card">
+
+                                <h1>Declined Bookings</h1>
+                                <div class="info">
+                                    <div class="booking">
+                                        <h2><%= @declined_bookings %></h2>
+                                        <small>Booking</small>
+                                    </div>
+                                    <div class="check-in">
+                                        <h2>19</h2>
+                                        <small>Check In</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <p>Saint-Denis</p>
+                        </div>
+                    </div>
+                    <!-- End of Card Section-->
+
+                </div>
+            </div>
+        </main>
+        <!-- End of Main Section -->
+
+        <!-- Right Section-->
+        <div class="right-section">
+            <div class="nav">
+                <div class="profile">
+                        <div class="profile-photo">
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="booking-section">
+                    <div class="booking-content">
+                        <img
+                            src="https://img.freepik.com/photos-gratuite/paysage-urbain-ensoleille_23-2149504786.jpg?w=1380&t=st=1692871525~exp=1692872125~hmac=f787f15f2ff2c0851f70a402887d358d6544e29852a728d2af5b9c91ed2db7b4">
+                        <div class="title">
+                            <h3>Pending Booking Request</h3>
+                            <% @ponies.each do |pony| %>
+                              <% pony.bookings.each do |booking| %>
+                                <% if booking.status == "pending" %>
+                                  <div class="booking-request" data-booking-id="<%= booking.id %>">
+                                    <p>You have a request on <%= pony.name %> <%= booking.status %></p>
+                                    <%= button_to "Accept", accept_booking_path(booking), method: "patch", class: "btn btn-success", onclick: "handleButtonClick(this)"  %>
+                                    <%= button_to "Decline", decline_booking_path(booking), method: "patch", class: "btn btn-danger", onclick: "handleButtonClick(this)"  %>
+                                  </div>
+                                <% end %>
+                              <% end %>
+                            <% end %>
+
+
+
+                        </div>
+
+                        </div>
+                    </div>
+
+            </div>
+        </div>
+        <!-- End of Right Section-->
+    </div>
+</body>
+<script src="index.js"></script>
+</html>
+
+
+<div class="section">
       <h2>Pending Booking Requests</h2>
-      <% @ponies.each do |pony| %>
-        <% pony.bookings.each do |booking| %>
-          <% if booking.status == "Pending" %>
-            <div class="booking-request" data-booking-id="<%= booking.id %>">
-              <p>You have a request on <%= pony.name %> <%= booking.status %></p>
-              <%= button_to "Accept", accept_booking_path(booking), method: "patch", class: "btn btn-success", onclick: "handleButtonClick(this)"  %>
-              <%= button_to "Decline", decline_booking_path(booking), method: "patch", class: "btn btn-danger", onclick: "handleButtonClick(this)"  %>
-            </div>
-          <% end %>
-        <% end %>
-      <% end %>
-    </div>
 
-    <script>
-      // ... (your existing script)
-    </script>
-  </div>
-<% end %>
+    </div>

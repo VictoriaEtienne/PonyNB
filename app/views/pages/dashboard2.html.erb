@@ -1,0 +1,57 @@
+<% if user_signed_in? %>
+  <div id="dashboard-container" class="dashboard">
+    <h1>Welcome to your dashboard!</h1>
+
+    <div class="section">
+      <h2>Your Bookings</h2>
+      <% if @booked_ponies.present? %>
+        <ul>
+          <% @booked_ponies.each do |pony| %>
+            <div class="booking-details">
+              <li><%= link_to pony.name, pony_path(pony) %></li>
+              <img src="<%= pony.photo.url %>" alt="<%= pony.name %> Photo">
+              <% pony.bookings.each do |booking| %>
+                <p>Date of Reservation: <%= booking.start_time %> to <%= booking.end_time %></p>
+              <% end %>
+            </div>
+          <% end %>
+        </ul>
+      <% else %>
+        <p>You haven't booked any ponies yet.</p>
+      <% end %>
+    </div>
+
+    <!-- Section for pending booking requests -->
+    <div class="section">
+      <h2>Pending Booking Requests</h2>
+      <% @ponies.each do |pony| %>
+        <% pony.bookings.each do |booking| %>
+          <% if booking.status == "pending" %>
+            <div class="booking-request" data-booking-id="<%= booking.id %>">
+              <p>You have a request on <%= pony.name %> <%= booking.status %></p>
+              <%= button_to "Accept", accept_booking_path(booking), method: "patch", class: "btn btn-success", onclick: "handleButtonClick(this)"  %>
+              <%= button_to "Decline", decline_booking_path(booking), method: "patch", class: "btn btn-danger", onclick: "handleButtonClick(this)"  %>
+            </div>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+
+    <script>
+      // ... (your existing script)
+    </script>
+  </div>
+<% end %>
+
+
+
+    <h1 class="title">Manage your booking here</h1>
+    <p>You currently have <%= @total_bookings %> bookings</p>
+    <div class="main-section">
+      <div class="analyse">
+        <div class="total-bookings">
+          <div class="booking-card">
+          </div>
+        </div>
+      </div>
+    </div>
